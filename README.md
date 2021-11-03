@@ -17,7 +17,7 @@ HAproxy articles:
 
 
 
-not as simple as writing the contents of your haproxy.cfg (https://github.com/voutilad/haproxy-and-neo4j)  to /etc/haproxy/haproxy.cfg on the host. The reason I'm skeptical is because in your haproxy.cfg file there are a lot of references to letsencrypt. I know when we setup the loadbalancer we had google create the certificate and it was issued by GTS and google assigns that cert to the LB (and updates the cert for us). I'm assuming GTS would need to be used in this Second Layer (HAProxy) as well... not letsencrypt. On the other hand, after reading a little into HAProxy, it seems your frontend http-in, and frontend tls-in sections have a fall back from use_backend: letsencrypt which is default_backend: neo4j-http. The default_backend neo4j-http only looks like it would be used for http traffic though so .... 
+not as simple as writing the contents of Dave's haproxy.cfg (https://github.com/voutilad/haproxy-and-neo4j)  to /etc/haproxy/haproxy.cfg on the GCP VM. I know when we setup the loadbalancer we had google create the certificate and it was issued by GTS and google assigns that cert to the LB (and updates the cert for us). I'm assuming GTS would need to be used in this Second Layer (HAProxy) as well... not letsencrypt. 
 
 
 ## Helpful commands
