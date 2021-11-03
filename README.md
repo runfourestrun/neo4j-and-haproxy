@@ -36,5 +36,5 @@ haproxy -c -f haproxy.cfg
 ### Things I do not understand...
 
 
-1. What is certbot being used for 
-2. 
+1. I don't need to use certbot since letsencrypt is not issuing the cert but GTS is.. 
+
