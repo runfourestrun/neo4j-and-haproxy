@@ -38,5 +38,5 @@ haproxy -c -f haproxy.cfg
 1. I don't need to use certbot since letsencrypt is not issuing the cert but GTS is.. 
 2. I think at minimum the shell script needs to be heavily refactored. I think the script is still functionally neccessary because it looks like it installs the cert on the host which I think still needs to happen irregardless of the cert issuer. 
 3. 	bind *:443 ssl crt /etc/ssl/c360.sisu.io/c360.sisu.io.pem ... The cert is being installed by the shell script. Where do I get the pem to do this manually... do I run keygen on the host? ... 
-
+4. Basically just really struggling with using TLS encryption via HAProxy TLS termination
 
