@@ -40,9 +40,22 @@ haproxy -c -f haproxy.cfg
 
 ### Things I do not understand...
 
+I need the SSL certificate on the Load Balancer (SSL Termination). I think the SSL certificate also needs to be formatted in a funky way (it expects the SSL certificate to all be in one file which includes the certificate chain, root cert and private key). The shell script handles this automatically using letsencrypt but they are not the issuer in this situation. 
 
-1. I don't need to use certbot since letsencrypt is not issuing the cert but GTS is.. 
-2. I think at minimum the shell script needs to be heavily refactored. I think the script is still functionally neccessary because it looks like it installs the cert on the host which I think still needs to happen irregardless of the cert issuer. 
-3. ```	bind *:443 ssl crt /etc/ssl/c360.sisu.io/c360.sisu.io.pem ```... The cert is being installed by the shell script. Where do I get the pem to do this manually... do I run keygen on the host? ... 
-4. Basically just really struggling with using TLS encryption via HAProxy TLS termination
+### line in haproxy.cfg: Frontend_tls
+```	bind *:443 ssl crt /etc/ssl/c360.sisu.io/c360.sisu.io.pem ```
+
+### Running this command raises the following errors. 
+```
+haproxy -c -f haproxy.cfg
+[ALERT] 306/155904 (60603) : parsing [haproxy.cfg:50] : 'bind *:443' : unable to load SSL certificate file '/etc/ssl/c360.sisu.io/c360.sisu.io.pem' file does not exist.
+[ALERT] 306/155904 (60603) : Error(s) found in configuration file : haproxy.cfg
+[ALERT] 306/155904 (60603) : Fatal errors found in configuration.
+```
+
+### thoughts
+1. I don't need to use certbot since letsencrypt is not issuing the cert but GTS is.. Certbot seems to be an commandline program to generate certs from letsencrypt.
+2. I think at minimum the shell script needs to be heavily refactored for GTS. I think the script is still functionally neccessary because it looks like it installs the cert on the host which I think still needs to happen irregardless of the cert issuer... Unless I do it manually. 
+3. ```	bind *:443 ssl crt /etc/ssl/c360.sisu.io/c360.sisu.io.pem ```
+4. Basically just really struggling with using TLS termination with HAProxy (reverse proxy)
 
