@@ -29,7 +29,6 @@ haproxy -c -f haproxy.cfg
 * Each section in haproxy.cfg  basically pipes to the next section
 * Four Sections: Global,Default,frontend,backend
 
-#### Global
 
 
 
@@ -37,4 +36,5 @@ haproxy -c -f haproxy.cfg
 
 
 1. I don't need to use certbot since letsencrypt is not issuing the cert but GTS is.. 
+2. I think at minimum the shell script needs to be heavily refactored. I think the script is still functionally neccessary because it looks like it installs the cert on the host which I think still needs to happen irregardless of the cert issuer. 
 
