@@ -9,12 +9,12 @@ Example /etc/crontab entry:
 
 
 ## Helpful commands
-
+```
 haproxy -c -f haproxy.cfg
 [ALERT] 306/155904 (60603) : parsing [haproxy.cfg:50] : 'bind *:443' : unable to load SSL certificate file '/etc/ssl/c360.sisu.io/c360.sisu.io.pem' file does not exist.
 [ALERT] 306/155904 (60603) : Error(s) found in configuration file : haproxy.cfg
 [ALERT] 306/155904 (60603) : Fatal errors found in configuration.
-
+```
 
 
 
